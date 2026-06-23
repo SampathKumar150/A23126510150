@@ -4,6 +4,7 @@ require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 const requestLogger = require("../logging-middleware/requestLogger");
 const vehicleRoutes = require("./routes/vehicleRoutes");
+const depotRoutes = require("./routes/depotRoutes");
 const Log = require("../logging-middleware/logging");
 
 const app = express();
@@ -23,6 +24,7 @@ app.get("/", async (req, res) => {
 });
 
 app.use("/api/vehicles", vehicleRoutes);
+app.use("/api/depots", depotRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, async () => {
