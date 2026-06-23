@@ -1,5 +1,5 @@
 const Log = require("../../logging-middleware/logging");
-
+const vehicleService = require("../services/vehicleService");
 async function getVehicles(req, res) {
     try {
         await Log(
@@ -8,10 +8,15 @@ async function getVehicles(req, res) {
             "controller",
             "getVehicles controller started"
         );
+        const vehicles = await vehicleService.getVehicles();
+        await Log(
+            "backend",
+            "info",
+            "controller",
+            "getVehicles controller completed successfully"
+        );
 
-        res.status(200).json({
-            message: "Vehicle controller working",
-        });
+        res.status(200).json(vehicles);
     } catch (error) {
         await Log(
             "backend",
@@ -28,4 +33,5 @@ async function getVehicles(req, res) {
 
 module.exports = {
     getVehicles,
+    
 };

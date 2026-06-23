@@ -1,6 +1,6 @@
 const axios = require('axios');
-require('dotenv').config();
-
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 const vaildStack = ['backend', 'frontend'];
 const validLevels = ['debug', 'info', 'warn', 'error', 'fatal'];
 const vaildPackages = [

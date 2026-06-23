@@ -1,4 +1,4 @@
-const Log = require("../logging_middleware/logging");
+const Log = require("../logging-middleware/logging");
 
 function requestLogger(req, res, next) {
     const startTime = Date.now();
@@ -6,7 +6,7 @@ function requestLogger(req, res, next) {
     Log(
         "backend",
         "info",
-        "middleware",
+        "handler",
         `${req.method} ${req.originalUrl} request received`
     );
 
@@ -16,7 +16,7 @@ function requestLogger(req, res, next) {
         Log(
             "backend",
             "info",
-            "middleware",
+            "handler",
             `${req.method} ${req.originalUrl} completed with status ${res.statusCode} in ${duration}ms`
         );
     });

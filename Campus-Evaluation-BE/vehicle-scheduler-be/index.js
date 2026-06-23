@@ -1,7 +1,9 @@
 const express = require("express");
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+
 const requestLogger = require("../logging-middleware/requestLogger");
 const vehicleRoutes = require("./routes/vehicleRoutes");
-require('dotenv').config({ path: './.env' });
 const Log = require("../logging-middleware/logging");
 
 const app = express();
@@ -27,7 +29,7 @@ app.listen(PORT, async () => {
     await Log(
         "backend",
         "info",
-        "config",
+        "handler",
         `Vehicle Scheduler Backend started on port ${PORT}`
     );
 });
